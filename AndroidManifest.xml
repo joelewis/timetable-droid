@@ -36,8 +36,12 @@
         </activity>
         <activity
             android:name="com.joe.timetablelite.AutoSuggest"
-            android:theme="@style/Theme.Transparent"
-            android:label="@string/title_activity_auto_suggest" >
+            android:label="@string/title_activity_auto_suggest"
+            android:theme="@style/Theme.Transparent" >
+        </activity>
+        <activity
+            android:name="com.joe.timetablelite.EditActivityTuesday"
+            android:label="@string/title_activity_edit_activity_tuesday" >
         </activity>
     </application>
 

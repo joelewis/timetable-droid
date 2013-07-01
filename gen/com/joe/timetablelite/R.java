@@ -36,39 +36,42 @@ public final class R {
         public static final int selected_state=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f090011;
+        public static final int action_settings=0x7f090012;
         public static final int autocomplete_subject=0x7f090002;
         public static final int back_to_choose=0x7f090007;
         public static final int editContainer=0x7f090004;
         public static final int editListView=0x7f090005;
+        public static final int editListViewTuesday=0x7f09000a;
         public static final int editMenuContainer=0x7f090006;
         public static final int next_day=0x7f090009;
-        public static final int nopelater=0x7f09000d;
-        public static final int periodNo=0x7f09000f;
-        public static final int periods=0x7f09000c;
+        public static final int nopelater=0x7f09000e;
+        public static final int periodNo=0x7f090010;
+        public static final int periods=0x7f09000d;
         public static final int save=0x7f090008;
-        public static final int seekBar1=0x7f09000b;
-        public static final int seekBarValue=0x7f09000a;
-        public static final int subject=0x7f090010;
+        public static final int seekBar1=0x7f09000c;
+        public static final int seekBarValue=0x7f09000b;
+        public static final int subject=0x7f090011;
         public static final int subject_ok=0x7f090003;
         public static final int textView1=0x7f090001;
         public static final int updatetimetable=0x7f090000;
-        public static final int yepnow=0x7f09000e;
+        public static final int yepnow=0x7f09000f;
     }
     public static final class layout {
         public static final int activity_auto_suggest=0x7f030000;
         public static final int activity_edit=0x7f030001;
-        public static final int activity_edit_time_table=0x7f030002;
-        public static final int activity_index=0x7f030003;
-        public static final int activity_launch=0x7f030004;
-        public static final int activity_today=0x7f030005;
-        public static final int list_view_component_edit=0x7f030006;
+        public static final int activity_edit_activity_tuesday=0x7f030002;
+        public static final int activity_edit_time_table=0x7f030003;
+        public static final int activity_index=0x7f030004;
+        public static final int activity_launch=0x7f030005;
+        public static final int activity_today=0x7f030006;
+        public static final int list_view_component_edit=0x7f030007;
     }
     public static final class menu {
         public static final int auto_suggest=0x7f080000;
         public static final int edit=0x7f080001;
-        public static final int edit_time_table=0x7f080002;
-        public static final int launch=0x7f080003;
+        public static final int edit_activity_tuesday=0x7f080002;
+        public static final int edit_time_table=0x7f080003;
+        public static final int launch=0x7f080004;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -76,6 +79,7 @@ public final class R {
         public static final int hello_world=0x7f060002;
         public static final int title_activity_auto_suggest=0x7f060005;
         public static final int title_activity_edit=0x7f060004;
+        public static final int title_activity_edit_activity_tuesday=0x7f060006;
         public static final int title_activity_edit_time_table=0x7f060003;
     }
     public static final class style {

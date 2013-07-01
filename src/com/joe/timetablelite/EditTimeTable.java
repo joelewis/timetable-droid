@@ -74,6 +74,7 @@ public class EditTimeTable extends Activity {
 		Intent intent = new Intent(context,EditActivity.class);
 		String str = tvv.getText().toString();
 		int val = Integer.parseInt(str);
+		intent.putExtra("intention", 0);
 		intent.putExtra("noOfPeriods", val);
 		Log.i("value", "" + val);
 		startActivity(intent);

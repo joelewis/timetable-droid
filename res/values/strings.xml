@@ -7,5 +7,6 @@
     <string name="title_activity_edit_time_table">EditTimeTable</string>
     <string name="title_activity_edit">EditActivity</string>
     <string name="title_activity_auto_suggest">AutoSuggest</string>
+    <string name="title_activity_edit_activity_tuesday">EditActivityTuesday</string>
 
 </resources>

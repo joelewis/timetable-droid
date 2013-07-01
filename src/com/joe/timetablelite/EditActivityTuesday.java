@@ -18,7 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class EditActivity extends Activity {
+public class EditActivityTuesday extends Activity {
 	SQLiteDatabase db;
 	TimeTableDbHelper mDbHelper;
 	int noOfRows;
@@ -29,18 +29,34 @@ public class EditActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_launch);
 		mDbHelper =  new TimeTableDbHelper(context);
+		//int NoOfRows = getIntent().getExtras().getInt("noOfPeriods");
+		noOfRows = Constants.noOfPeriods;
 		
-		if(getIntent().getExtras().getInt("intention") == 0) {
-			int NoOfRows = getIntent().getExtras().getInt("noOfPeriods");
-			noOfRows = NoOfRows;
-			Constants.noOfPeriods = NoOfRows;
-			Constants.monday = new ArrayList<String>();
-			Initdatabase init = new Initdatabase();
-			init.execute();
-		}
-		else {
-			new QueryDb().execute();
-		}
+			
+		Constants.tuesday = new ArrayList<String>();
+		//Initdatabase init = new Initdatabase();
+		//init.execute();
+		for(int i=0; i<Constants.noOfPeriods; i++) {
+    		Constants.tuesday.add("+++");
+    	}
+    	CustomEditAdapter adapter= new CustomEditAdapter(context, R.layout.list_view_component_edit, R.id.subject, Constants.tuesday);
+    	setContentView(R.layout.activity_edit);
+    	final ListView lv = (ListView) findViewById(R.id.editListView);
+    	lv.setAdapter(adapter);
+    	listView = lv;
+    	lv.setOnItemClickListener(new OnItemClickListener(){
+			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+		
+				ArrayAdapter<String> adapter1 = (ArrayAdapter<String>) lv.getAdapter();
+				Intent i = new Intent(context, AutoSuggest.class);
+				i.putExtra("period-id", position);
+				i.putExtra("day-id", 1);
+				startActivityForResult(i, 1);
+				
+			}
+			
+		});
+		
 		
 		
 	}
@@ -58,32 +74,7 @@ public class EditActivity extends Activity {
         @Override
         protected void onPostExecute(final Void unused){
             //update UI with my objects
-        	for(int i=0; i<Constants.noOfPeriods; i++) {
-        		Constants.monday.add("+++");
-        	}
-        	CustomEditAdapter adapter= new CustomEditAdapter(context, R.layout.list_view_component_edit, R.id.subject, Constants.monday);
-        	setContentView(R.layout.activity_edit);
-        	final ListView lv = (ListView) findViewById(R.id.editListView);
-        	lv.setAdapter(adapter);
-        	listView = lv;
-        	lv.setOnItemClickListener(new OnItemClickListener(){
-    			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-    		
-    				ArrayAdapter<String> adapter1 = (ArrayAdapter<String>) lv.getAdapter();
-    				Intent i = new Intent(context, AutoSuggest.class);
-    				i.putExtra("period-id", position);
-    				i.putExtra("day-id", 0);
-    				startActivityForResult(i, 1);
-    				
-    				//adapter1.remove("+");
-    				
-    				//I don't exactly know how ArrayAdapter is used with List variable :(
-    			 //   adapter1.remove(task);
-    			    //lv.refreshDrawableState();
-    				//adapter1.notifyDataSetChanged();
-    			}
-    			
-    		});
+        	
         }
     }
 	
@@ -96,15 +87,15 @@ public class EditActivity extends Activity {
         	//ContentValues values = new ContentValues();
         	ContentValues values= new ContentValues();
 			
-        	for(int i=0; i < Constants.monday.size(); i++) {
-        		if(Constants.monday.get(i) != "+++") {
-        		values.put("period"+(i+1), Constants.monday.get(i));
+        	for(int i=0; i < Constants.tuesday.size(); i++) {
+        		if(Constants.tuesday.get(i) != "+++") {
+        		values.put("period"+(i+1), Constants.tuesday.get(i));
         		}
         		else {
         		values.put("period"+(i+1), "nil");	
         		}
         	}
-        	db.update(TimeTableDbHelper.TABLE_NAME_TIMETABLE, values, "id = " + 1, null);
+        	db.update(TimeTableDbHelper.TABLE_NAME_TIMETABLE, values, "id = " + 2, null);
         	return null;
         }
 
@@ -116,20 +107,23 @@ public class EditActivity extends Activity {
         }
     }
 	
+	
 	private class QueryDb extends AsyncTask<Void, Void, Void> {
 		 
         @Override
         protected Void doInBackground(Void... objects) {
-        	Constants.monday = null;
-        	Constants.monday = new ArrayList<String>();
-        	db = mDbHelper.getWritableDatabase();
-        	Cursor cursor = db.query(TimeTableDbHelper.TABLE_NAME_TIMETABLE, TimeTableDbHelper.allColumns_mod, "id = " + 1, null, null, null, null);
-        	cursor.moveToFirst();
-        	Log.i("fetched", cursor.getCount() + "of rows and " + cursor.getColumnCount() + "  of columns");
         	
-        	for(int i=1; i < cursor.getColumnCount(); i++) {
-        		Constants.monday.add(cursor.getString(i));
-        		Log.i("tag", cursor.getString(i));
+        	db = mDbHelper.getWritableDatabase();
+        	Cursor cursor = db.query(TimeTableDbHelper.TABLE_NAME_TIMETABLE, TimeTableDbHelper.allColumns_mod, "id = " + 2, null, null, null, null);
+        	cursor.moveToFirst();
+        	Log.i("fetched", cursor.getColumnCount() + "of rows and " + cursor.getColumnCount() + "  of columns");
+        	
+        	for(int i=0; i<cursor.getCount(); i++) {
+        		if(cursor.getString(i) != "nil") {
+        		Constants.tuesday.add(i, cursor.getString(i));
+        		} else {
+        			Constants.tuesday.add(i, "+++");
+        		}
         	}
         	
         	return null;
@@ -139,7 +133,7 @@ public class EditActivity extends Activity {
         protected void onPostExecute(final Void unused){
         	
             //update UI with my objects
-        	CustomEditAdapter adapter= new CustomEditAdapter(context, R.layout.list_view_component_edit, R.id.subject, Constants.monday);
+        	CustomEditAdapter adapter= new CustomEditAdapter(context, R.layout.list_view_component_edit, R.id.subject, Constants.tuesday);
         	setContentView(R.layout.activity_edit);
         	final ListView lv = (ListView) findViewById(R.id.editListView);
         	lv.setAdapter(adapter);
@@ -166,20 +160,13 @@ public class EditActivity extends Activity {
         }
     }
 	
-	
 	protected void onPause() {
 		//new UpdateDb().execute();
 		super.onPause();
 		
 	}
 	
-	protected void onFinish() {
-		//Constants.monday = null;
-		super.finish();
-	}
-	
 	public void goBack(View v) {
-		
 		super.finish();
 	}
 	
@@ -188,8 +175,8 @@ public class EditActivity extends Activity {
 	}
 	
 	public void goNext(View v) {
-		new UpdateDb().execute();
-		Intent intent = new Intent(this, EditActivityTuesday.class);
+		Intent intent = new Intent(this, EditActivity.class);
+		intent.putExtra("intention", 1);
 		startActivity(intent);
 	}
 	
@@ -205,7 +192,7 @@ public class EditActivity extends Activity {
 		         int periodid = data.getExtras().getInt("period-id");
 		         ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) listView.getAdapter();
 		         
-		         Constants.monday.set(periodid, result);
+		         Constants.tuesday.set(periodid, result);
 		         
 		         adapter2.notifyDataSetChanged();
 		         

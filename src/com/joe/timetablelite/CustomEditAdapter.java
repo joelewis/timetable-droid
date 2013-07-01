@@ -20,11 +20,13 @@ public class CustomEditAdapter extends ArrayAdapter<String> {
 	int positionn;
 	View convertVieww;
 	ViewGroup parentt;
+	List values;
 	//List<String> values;
 	
 	public CustomEditAdapter(Context context, int resource,
 			int textViewResourceId, List objects) {
 		super(context, resource, textViewResourceId, objects);
+		values = objects;
 		contextt = context;
 		// TODO Auto-generated constructor stub
 		//values = objects;
@@ -39,6 +41,10 @@ public class CustomEditAdapter extends ArrayAdapter<String> {
 		TextView tv = (TextView) v.findViewById(R.id.periodNo);
 		tv.setText((position+1)+"");
 		TextView tv2 = (TextView) v.findViewById(R.id.subject);
+		if(values.get(position) == "nil") {
+			tv2.setText("+++");
+		}
+		
 		//tv1=tv2;
 		//tv2.setOnClickListener(this);
 		return ll;

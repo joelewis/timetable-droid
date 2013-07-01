@@ -93,7 +93,7 @@ public class TimeTableDbHelper extends SQLiteOpenHelper {
 		String post_statement = ");";
 		SQL_CREATE_ENTRIES_MOD = pre_statement + statement + post_statement;
 		allColumns_mod = new String[noOfRows+1];
-		allColumns_mod[0] = "COLUMN_NAME_ID";
+		allColumns_mod[0] = COLUMN_NAME_ID;
 		for(int j=0; j<noOfRows; j++) {
 			allColumns_mod[j+1] = "period" +(j+1);
 		}
