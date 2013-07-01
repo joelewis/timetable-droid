@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" 
+    android:weightSum="1" 
+    android:padding="8dp"
+    >
+
+    <TextView
+        android:id="@+id/periodNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="T" 
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_margin="10dp" 
+        android:textSize="25sp" 
+        android:gravity="left" 
+        android:textColor="#444"/>
+
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.8"
+        android:text="Line Item"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:layout_margin="10dp" 
+        android:textSize="30sp" 
+        android:gravity="center" 
+        android:textStyle="bold" 
+        android:textColor="#444" 
+        android:background="@color/textviewbackground"/>
+
+</LinearLayout>

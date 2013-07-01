@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TimeTableLite</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_edit_time_table">EditTimeTable</string>
+    <string name="title_activity_edit">EditActivity</string>
+    <string name="title_activity_auto_suggest">AutoSuggest</string>
+
+</resources>
