@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp"
+    android:weightSum="1" 
+    >
+    
+    <TextView
+        android:id="@+id/updatetimetable"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.25"
+        android:gravity="center|bottom"
+        android:text="Done!"
+        android:textColor="#059"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+    <TextView
+        android:id="@+id/updatetimetable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        
+        android:gravity="center|top"
+        android:text="Your Time Table goes digital! \n You'll recieve notifications for stacking your bag, as and when required."
+        android:textColor="#555"
+        android:textSize="15sp"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#08c"
+        android:text=""
+        android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/periods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/textviewbackground"
+            android:padding="25dp"
+            android:text="Finish"
+            android:textColor="#444"
+            android:textSize="30sp"
+            android:textStyle="bold" 
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:clickable="true" 
+            android:gravity="center|bottom"
+            android:onClick="toExit"/>
+   
+
+</LinearLayout>

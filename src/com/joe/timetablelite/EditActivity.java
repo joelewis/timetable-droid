@@ -58,6 +58,7 @@ public class EditActivity extends Activity {
         @Override
         protected void onPostExecute(final Void unused){
             //update UI with my objects
+        	Constants.monday.clear();
         	for(int i=0; i<Constants.noOfPeriods; i++) {
         		Constants.monday.add("+++");
         	}
@@ -97,11 +98,12 @@ public class EditActivity extends Activity {
         	ContentValues values= new ContentValues();
 			
         	for(int i=0; i < Constants.monday.size(); i++) {
-        		if(Constants.monday.get(i) != "+++") {
-        		values.put("period"+(i+1), Constants.monday.get(i));
+        		if(Constants.monday.get(i).equalsIgnoreCase("+++")) {
+        			values.put("period"+(i+1), "nil");	
+        		
         		}
         		else {
-        		values.put("period"+(i+1), "nil");	
+        			values.put("period"+(i+1), Constants.monday.get(i));
         		}
         	}
         	db.update(TimeTableDbHelper.TABLE_NAME_TIMETABLE, values, "id = " + 1, null);
@@ -127,10 +129,15 @@ public class EditActivity extends Activity {
         	cursor.moveToFirst();
         	Log.i("fetched", cursor.getCount() + "of rows and " + cursor.getColumnCount() + "  of columns");
         	
-        	for(int i=1; i < cursor.getColumnCount(); i++) {
-        		Constants.monday.add(cursor.getString(i));
-        		Log.i("tag", cursor.getString(i));
+        	for(int i=1; i<cursor.getColumnCount(); i++) {
+        		if(cursor.getString(i).equalsIgnoreCase("nil")) {
+        			Constants.monday.add("+++");
+        		} else {
+        			
+        			Constants.monday.add(cursor.getString(i));
+        		}
         	}
+        	
         	
         	return null;
         }
@@ -174,12 +181,11 @@ public class EditActivity extends Activity {
 	}
 	
 	protected void onFinish() {
-		//Constants.monday = null;
+		Constants.monday.clear();
 		super.finish();
 	}
 	
-	public void goBack(View v) {
-		
+	public void goBack(View v) {	
 		super.finish();
 	}
 	
@@ -191,6 +197,7 @@ public class EditActivity extends Activity {
 		new UpdateDb().execute();
 		Intent intent = new Intent(this, EditActivityTuesday.class);
 		startActivity(intent);
+		super.finish();
 	}
 	
 	

@@ -1,0 +1,116 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/editContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context=".MainEditActivity" >
+
+    <ListView
+        android:id="@+id/editListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:layout_weight="0.85" >
+    </ListView>
+ 
+    <LinearLayout
+        android:id="@+id/editMenuContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:gravity="bottom">
+
+        <TextView
+            android:id="@+id/mon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/textviewbackground"
+            android:padding="5dp"
+            android:text="MON"
+            android:textColor="#444"
+            android:textSize="15sp"
+            android:textStyle="bold" 
+            android:textAlignment="center"
+            android:layout_marginRight="0dp"
+            android:clickable="true" 
+            android:onClick="mon"
+            android:gravity="center"/>
+        
+        <TextView
+            android:id="@+id/tue"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/textviewbackground"
+            android:padding="5dp"
+            android:text="TUE"
+            android:textColor="#444"
+            android:textSize="15sp"
+            android:textStyle="bold" 
+            android:textAlignment="center"
+            android:layout_margin="1dp"
+            android:clickable="true" 
+            android:onClick="tue"
+            android:gravity="center"/>
+        
+        <TextView
+            android:id="@+id/wed"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/textviewbackground"
+            android:padding="5dp"
+            android:text="WED"
+            android:textColor="#444"
+            android:textSize="15sp"
+            android:textStyle="bold" 
+            android:textAlignment="center"
+            android:layout_margin="1dp"
+            android:clickable="true" 
+            android:onClick="wed"
+            android:gravity="center"/>
+        
+        <TextView
+            android:id="@+id/thu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/textviewbackground"
+            android:padding="5dp"
+            android:text="THU"
+            android:textColor="#444"
+            android:textSize="15sp"
+            android:textStyle="bold" 
+            android:textAlignment="center"
+            android:layout_margin="1dp"
+            android:clickable="true" 
+            android:onClick="thu"
+            android:gravity="center"/>
+        
+        <TextView
+            android:id="@+id/fri"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/textviewbackground"
+            android:padding="5dp"
+            android:text="FRI"
+            android:textColor="#444"
+            android:textSize="15sp"
+            android:textStyle="bold" 
+            android:textAlignment="center"
+            android:layout_margin="1dp"
+            android:clickable="true" 
+            android:onClick="fri"
+            android:gravity="center"/>
+        
+        
+
+    </LinearLayout> 
+
+</LinearLayout>

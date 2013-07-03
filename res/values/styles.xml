@@ -21,7 +21,7 @@
 
   <style name="Theme.Transparent" parent="android:Theme">
     <item name="android:windowIsTranslucent">true</item>
-    <item name="android:windowBackground">@color/dark_transparent</item>
+    <item name="android:windowBackground">@color/lite_transparent</item>
     <item name="android:windowContentOverlay">@null</item>
     <item name="android:windowNoTitle">true</item>
     <item name="android:windowIsFloating">true</item>

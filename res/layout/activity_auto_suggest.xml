@@ -30,6 +30,7 @@
             android:id="@+id/autocomplete_subject"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textColor="#059"
              />
 
         <TextView

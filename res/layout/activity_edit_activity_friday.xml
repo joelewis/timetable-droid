@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/editContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:orientation="vertical"
+    tools:context=".EditActivityFriday" 
+    android:weightSum="1">
+    <ListView 
+    android:id="@+id/editListView"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.85" 
+    android:layout_margin="20dp"
+    >
+	</ListView>
+
+    <LinearLayout
+        android:id="@+id/editMenuContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        tools:context=".EditActivity" >
+
+        <Button
+            android:id="@+id/back_to_choose"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="0.5"
+            android:drawableTop="@drawable/glyphicons_172_rewind"
+            android:text="Back" 
+            android:onClick="goBack"/>
+
+        
+
+        <Button
+            android:id="@+id/next_day"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="0.5"
+            android:drawableTop="@drawable/glyphicons_193_circle_ok"
+            android:text="Done" 
+            android:onClick="goNext"/>
+    </LinearLayout>
+
+</LinearLayout>

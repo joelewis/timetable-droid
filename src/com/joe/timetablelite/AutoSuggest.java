@@ -21,34 +21,26 @@ public class AutoSuggest extends Activity {
 		AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autocomplete_subject);
 		// Get the string array
 		
-		int dayid = getIntent().getExtras().getInt("day-id");
-		ArrayList<String> suggestions = new ArrayList<String>();
-		Log.i("value", " : "+dayid);
-		switch(dayid) {
-		case 0: 
-			Log.i("into", "monday");
-			suggestions = Constants.monday;break; 
-		case 1: 
-			 suggestions = Constants.tuesday;break;
-		case 2: 
-			 suggestions = Constants.wednesday;break;
-		case 3: 
-			 suggestions = Constants.thursday;break;
-		case 4: 
-			 suggestions = Constants.friday;break;
-		}
+		
 		 
 		// Create the adapter and set it to the AutoCompleteTextView 
 		ArrayAdapter<String> adapter = 
-		        new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, suggestions);
+		        new ArrayAdapter<String>(this, R.layout.simple_list_item_1, Constants.autosuggest);
 		textView.setAdapter(adapter);
 	}
 	
 	public void returnresult(View v) {
 		 Intent returnIntent = new Intent();
-		 String result = "+++";
-	     if(((AutoCompleteTextView) findViewById(R.id.autocomplete_subject)).getText().toString() != "" ) {
+		 String result = "+";
+	     if(((AutoCompleteTextView) findViewById(R.id.autocomplete_subject)).getText().equals("") ) {
+	     }
+	     else {
 	    	 result = ((AutoCompleteTextView) findViewById(R.id.autocomplete_subject)).getText().toString();
+	     }
+	     if(Constants.autosuggest.contains(result)) {	    	 
+	     }
+	     else {
+	    	 Constants.autosuggest.add(result);
 	     }
 	     int periodid = getIntent().getExtras().getInt("period-id");
 		 returnIntent.putExtra("result", result);

@@ -8,5 +8,10 @@
     <string name="title_activity_edit">EditActivity</string>
     <string name="title_activity_auto_suggest">AutoSuggest</string>
     <string name="title_activity_edit_activity_tuesday">EditActivityTuesday</string>
+    <string name="title_activity_edit_activity_wednesday">EditActivityWednesday</string>
+    <string name="title_activity_edit_activity_thursday">EditActivityThursday</string>
+    <string name="title_activity_edit_activity_friday">EditActivityFriday</string>
+    <string name="title_activity_done">DoneActivity</string>
+    <string name="title_activity_main_edit">MainEditActivity</string>
 
 </resources>

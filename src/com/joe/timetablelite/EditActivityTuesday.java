@@ -2,6 +2,8 @@ package com.joe.timetablelite;
 
 import java.util.ArrayList;
 
+
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
@@ -32,7 +34,7 @@ public class EditActivityTuesday extends Activity {
 		//int NoOfRows = getIntent().getExtras().getInt("noOfPeriods");
 		noOfRows = Constants.noOfPeriods;
 		
-			
+		/*	
 		Constants.tuesday = new ArrayList<String>();
 		//Initdatabase init = new Initdatabase();
 		//init.execute();
@@ -56,7 +58,8 @@ public class EditActivityTuesday extends Activity {
 			}
 			
 		});
-		
+		*/
+		new QueryDb().execute();
 		
 		
 	}
@@ -88,11 +91,12 @@ public class EditActivityTuesday extends Activity {
         	ContentValues values= new ContentValues();
 			
         	for(int i=0; i < Constants.tuesday.size(); i++) {
-        		if(Constants.tuesday.get(i) != "+++") {
+        		if(Constants.tuesday.get(i).equalsIgnoreCase("+++")) {
         		values.put("period"+(i+1), Constants.tuesday.get(i));
+        		
         		}
         		else {
-        		values.put("period"+(i+1), "nil");	
+        			values.put("period"+(i+1), Constants.tuesday.get(i));
         		}
         	}
         	db.update(TimeTableDbHelper.TABLE_NAME_TIMETABLE, values, "id = " + 2, null);
@@ -113,16 +117,20 @@ public class EditActivityTuesday extends Activity {
         @Override
         protected Void doInBackground(Void... objects) {
         	
+        	Constants.tuesday.clear();
         	db = mDbHelper.getWritableDatabase();
         	Cursor cursor = db.query(TimeTableDbHelper.TABLE_NAME_TIMETABLE, TimeTableDbHelper.allColumns_mod, "id = " + 2, null, null, null, null);
         	cursor.moveToFirst();
-        	Log.i("fetched", cursor.getColumnCount() + "of rows and " + cursor.getColumnCount() + "  of columns");
+        	Log.i("fetched", cursor.getCount() + " of rows and " + cursor.getColumnCount() + "  of columns");
         	
-        	for(int i=0; i<cursor.getCount(); i++) {
-        		if(cursor.getString(i) != "nil") {
-        		Constants.tuesday.add(i, cursor.getString(i));
+        	for(int i=1; i<cursor.getColumnCount(); i++) {
+        		if(cursor.getString(i).equalsIgnoreCase("nil")) {
+        			Constants.tuesday.add("+++");
+        			
         		} else {
-        			Constants.tuesday.add(i, "+++");
+        			
+        			Constants.tuesday.add(cursor.getString(i));
+            		Log.i("check", "|" + cursor.getString(i) + "|");
         		}
         	}
         	
@@ -144,7 +152,7 @@ public class EditActivityTuesday extends Activity {
     				ArrayAdapter<String> adapter1 = (ArrayAdapter<String>) lv.getAdapter();
     				Intent i = new Intent(context, AutoSuggest.class);
     				i.putExtra("period-id", position);
-    				i.putExtra("day-id", 0);
+    				i.putExtra("day-id", 1);
     				startActivityForResult(i, 1);
     				
     				//adapter1.remove("+");
@@ -165,9 +173,18 @@ public class EditActivityTuesday extends Activity {
 		super.onPause();
 		
 	}
-	
-	public void goBack(View v) {
+	protected void onFinish() {
+		
 		super.finish();
+	}
+	
+	public void goBack(View v) {	
+		new UpdateDb().execute();
+		Intent intent = new Intent(this, EditActivity.class);
+		intent.putExtra("intention", 1);
+		startActivity(intent);
+		//Constants.tuesday.clear();
+		//super.finish();
 	}
 	
 	public void saveThis(View v) {
@@ -175,9 +192,11 @@ public class EditActivityTuesday extends Activity {
 	}
 	
 	public void goNext(View v) {
-		Intent intent = new Intent(this, EditActivity.class);
-		intent.putExtra("intention", 1);
+		new UpdateDb().execute();
+		Intent intent = new Intent(this, EditActivityWednesday.class);
 		startActivity(intent);
+		//Constants.tuesday.clear();
+		//super.finish();
 	}
 	
 	

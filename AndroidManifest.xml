@@ -43,6 +43,36 @@
             android:name="com.joe.timetablelite.EditActivityTuesday"
             android:label="@string/title_activity_edit_activity_tuesday" >
         </activity>
+        <activity
+            android:name="com.joe.timetablelite.EditActivityWednesday"
+            android:label="@string/title_activity_edit_activity_wednesday" >
+        </activity>
+        <activity
+            android:name="com.joe.timetablelite.EditActivityThursday"
+            android:label="@string/title_activity_edit_activity_thursday" >
+        </activity>
+        <activity
+            android:name="com.joe.timetablelite.EditActivityFriday"
+            android:label="@string/title_activity_edit_activity_friday" >
+        </activity>
+        <activity
+            android:name="com.joe.timetablelite.DoneActivity"
+            android:label="@string/title_activity_done" >
+        </activity>
+
+        <receiver android:name="com.joe.timetablelite.HabitatorBootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.joe.timetablelite.HabitatorAlarmReceiver" />
+
+        <service android:name="com.joe.timetablelite.NotificationService" />
+
+        <activity
+            android:name="com.joe.timetablelite.MainEditActivity"
+            android:label="@string/title_activity_main_edit" >
+        </activity>
     </application>
 
 </manifest>
